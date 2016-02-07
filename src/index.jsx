@@ -1,9 +1,9 @@
 import './main.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Hello from './components/Hello';
+import Main from './components/Main';
 
-ReactDOM.render(<Hello />, document.getElementById('app'));
+ReactDOM.render(<Main />, document.getElementById('app'));
 
 if (module.hot) {
   module.hot.accept();
