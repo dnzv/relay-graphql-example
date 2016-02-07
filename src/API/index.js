@@ -1,8 +1,14 @@
 import {get} from 'jquery';
+import ServerActions from '../actions/ServerActions';
 
-export default {
+let API = {
   fetchLinks() {
-    console.log("1. In API fetchLinks");
-    get("/data/links").done(resp => console.log(resp));
+    console.log("1. API.fetchLinks");
+    get("/data/links").done(resp => {
+      console.log(resp);
+      ServerActions.recieveLinks(resp);
+    });
   }
 }
+
+export default API;
