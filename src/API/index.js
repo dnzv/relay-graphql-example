@@ -5,7 +5,6 @@ let API = {
   fetchLinks() {
     console.log("1. API.fetchLinks");
     get("/data/links").done(resp => {
-      console.log(resp);
       ServerActions.recieveLinks(resp);
     });
   }
