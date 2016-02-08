@@ -1,6 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
 
+process.env.MONGO_URL = process.env.MONGO_URL ||
+                        "mongodb://rgrjs:1234@ds059115.mongolab.com:59115/rgrjsdb";
 process.env.NODE_ENV = process.env.NODE_ENV || "development";
 process.env.BABEL_ENV = process.env.NODE_ENV;
 

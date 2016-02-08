@@ -25,7 +25,6 @@ app.use(express.static('public'));
 
 let db;
 
-// export MONGO_URL=mongodb://rgrjs:1234@ds059115.mongolab.com:59115/rgrjsdb
 MongoClient.connect(process.env.MONGO_URL, (err, database) => {
   if (err) throw err;
 
