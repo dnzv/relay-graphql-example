@@ -4,8 +4,10 @@ import { Schema } from '../data/schema';
 import { graphql }  from 'graphql';
 import { introspectionQuery, printSchema } from 'graphql/utilities';
 
+console.log('Creating schema.json...\n');
+
 (async () => {
-  let json = await graphql(schema, introspectionQuery);
+  let json = await graphql(Schema, introspectionQuery);
   if (json.errors) {
     console.error(
       'ERROR introspecting schema: ',
@@ -17,7 +19,7 @@ import { introspectionQuery, printSchema } from 'graphql/utilities';
       JSON.stringify(json, null, 2),
       (err) => {
         if (err) throw err;
-        console.log("JSON schema created.");
+        console.log("schema.json created.");
       }
     );
   }
