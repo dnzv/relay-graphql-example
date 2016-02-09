@@ -4,6 +4,9 @@
     "react",
     "stage-1"
   ],
+  "plugins": [
+    "./utils/babelRelayPlugin"
+  ],
   "env": {
     "development": {
       "presets": ["react-hmre"],
