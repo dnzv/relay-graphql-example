@@ -8,7 +8,7 @@ import schema from './data/schema';
 import GraphQLHTTP from 'express-graphql';
 
 let app = express();
-
+let port = process.env.PORT;
 let compiler = webpack(config);
 
 app.use(webpackDevMiddleware(compiler, {
@@ -23,17 +23,15 @@ app.use(webpackHotMiddleware(compiler, {
 
 app.use(express.static('public'));
 
-let db;
-
-MongoClient.connect(process.env.MONGO_URL, (err, database) => {
-  if (err) throw err;
-
-  db = database;
+(async () => {
+  let db = await MongoClient.connect(process.env.MONGO_URL);
 
   app.use('/graphql', GraphQLHTTP({
     schema: schema(db),
     graphiql: true
   }));
 
-  app.listen(3000, console.log("==> http://localhost:3000/"));
-});
+  app.listen(port, (err) => {
+    console.log('[%s] Listening on http://localhost:%d', app.settings.env, port)
+  });
+})();

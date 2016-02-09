@@ -2,13 +2,9 @@ import React from 'react';
 import API from '../API';
 import LinkStore from '../stores/LinkStore';
 
-export default class Main extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      links: LinkStore.getAll()
-    }
-  }
+class Main extends React.Component {
+
+  state = { links: LinkStore.getAll() };
 
   componentWillMount() {
     console.log("Adding change listener...");
@@ -46,3 +42,5 @@ export default class Main extends React.Component {
     this.setState({ links: LinkStore.getAll() });
   };
 }
+
+export default Main;
