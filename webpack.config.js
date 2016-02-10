@@ -1,11 +1,11 @@
 const path = require('path');
 const webpack = require('webpack');
+var env = require('./utils/params').env;
 
-process.env.MONGO_URL = process.env.MONGO_URL ||
-                        "mongodb://rgrjs:1234@ds059115.mongolab.com:59115/rgrjsdb";
-process.env.NODE_ENV = process.env.NODE_ENV || "development";
-process.env.BABEL_ENV = process.env.NODE_ENV;
-process.env.PORT = process.env.PORT || 3000;
+process.env.MONGO_URL = env.mongoUrl;
+process.env.NODE_ENV = env.mode;
+process.env.BABEL_ENV = env.mode;
+process.env.PORT = env.port;
 
 const PATHS = {
   src: path.join(__dirname, 'src'),
