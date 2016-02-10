@@ -3,7 +3,6 @@ import ServerActions from '../actions/ServerActions';
 
 let API = {
   fetchLinks() {
-    console.log("1. API.fetchLinks");
     post("/graphql", {
       query: `{
         links {

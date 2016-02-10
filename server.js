@@ -33,6 +33,6 @@ app.use(express.static('public'));
   }));
 
   app.listen(port, () => {
-    console.log(`Listening on http://localhost:${port} [${app.settings.env}]`)
+    console.log(`[${app.settings.env}] listening on http://localhost:${port}`)
   });
 })();

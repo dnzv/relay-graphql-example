@@ -6,17 +6,6 @@ import Relay from 'react-relay';
 
 ReactDOM.render(<Main />, document.getElementById('app'));
 
-console.log(
-  Relay.QL `
-    query Test {
-      links {
-        url,
-        title
-      }
-    }
-  `
-);
-
 if (module.hot) {
   module.hot.accept();
 }

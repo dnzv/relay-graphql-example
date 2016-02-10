@@ -7,7 +7,6 @@ class Main extends React.Component {
   state = { links: LinkStore.getAll() };
 
   componentWillMount() {
-    console.log("Adding change listener...");
     LinkStore.addChangeListener(this.onChange);
   }
 
@@ -16,13 +15,10 @@ class Main extends React.Component {
   }
 
   componentWillUnmount() {
-    console.log("Removing change listener...");
     LinkStore.removeChangeListener(this.onChange);
   }
 
   render() {
-    console.log("5. this.state.links: ", this.state.links);
-
     const linkNodes = this.state.links.map(link =>
       <li key={link._id}><a href={link.url}>{link.title}</a></li>
     );
@@ -38,7 +34,6 @@ class Main extends React.Component {
   }
 
   onChange = () => {
-    console.log("4. Main.onChange");
     this.setState({ links: LinkStore.getAll() });
   };
 }
