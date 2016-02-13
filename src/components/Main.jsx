@@ -1,10 +1,11 @@
 import React from 'react';
 import Relay from 'react-relay';
+import Link from './Link';
 
 class Main extends React.Component {
   render() {
     const linkNodes = this.props.store.links.map(link =>
-      <li key={link._id}><a href={link.url}>{link.title}</a></li>
+      <Link key={link._id} link={link} />
     );
 
     return (
@@ -24,8 +25,7 @@ Main = Relay.createContainer(Main, {
       fragment on Store {
         links {
           _id,
-          title,
-          url
+          ${Link.getFragment('link')}
         }
       }
     `

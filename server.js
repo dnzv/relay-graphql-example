@@ -24,15 +24,19 @@ app.use(webpackHotMiddleware(compiler, {
 app.use(express.static('public'));
 
 (async () => {
-  let db = await MongoClient.connect(process.env.MONGO_URL);
-  let schema = Schema(db);
+  try {
+    let db = await MongoClient.connect(process.env.MONGO_URL);
+    let schema = Schema(db);
 
-  app.use('/graphql', GraphQLHTTP({
-    schema,
-    graphiql: true
-  }));
+    app.use('/graphql', GraphQLHTTP({
+      schema,
+      graphiql: true
+    }));
 
-  app.listen(port, () => {
-    console.log(`[${app.settings.env}] listening on http://localhost:${port}`)
-  });
+    app.listen(port, () => {
+      console.log(`[${app.settings.env}] listening on http://localhost:${port}`)
+    });
+  } catch(e) {
+    console.log(e);
+  }
 })();
