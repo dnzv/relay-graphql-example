@@ -23,7 +23,8 @@ let Schema = (db) => {
         type: linkConnection.connectionType,
         args: connectionArgs,
         resolve: (_, args) => connectionFromPromisedArray(
-          db.collection("links").find({}).toArray(),
+          // limit needs more to work with pagination.
+          db.collection("links").find({}).limit(args.first).toArray(),
           args
         )
       }
